@@ -259,19 +259,19 @@ event = {
 }
 
 if st.button("Analyze Event"):pred = predict_event(model, feature_cols, baseline_map, event)
-    verdict = "Suspicious" if pred == 1 else "Normal"
-    action = "Require Nafath (strong auth)" if pred == 1 else "OTP / standard auth"
+ verdict = "Suspicious" if pred == 1 else "Normal"
+ action = "Require Nafath (strong auth)" if pred == 1 else "OTP / standard auth"
 
-    st.success(f"Prediction: **{verdict}**")
-    st.info(f"Decision: **{action}**")
+ st.success(f"Prediction: **{verdict}**")
+ st.info(f"Decision: **{action}**")
 
     # Show behavior deviation explanation
-    b = baseline_map.get(event["user_id"])
-    if b:
-        st.subheader("User Baseline (for comparison)")
-        st.json(b)
-    else:
-        st.warning("No baseline found for this user_id (treated as new user).")
+ b = baseline_map.get(event["user_id"])
+ if b:
+     st.subheader("User Baseline (for comparison)")
+     st.json(b)
+ else:
+     st.warning("No baseline found for this user_id (treated as new user).")
 
 
 st.divider()
